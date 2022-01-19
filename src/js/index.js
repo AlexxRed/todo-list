@@ -14,22 +14,23 @@ let todos = [
     { id: 4, label: 'template text', checked: false },
 ];
 
-function startRenderToDo(todos) {
+function startRenderToDo() {
     const markUpItems = todos.map((todo) => {
         return itemTemplate(todo)
     });
-    console.log(markUpItems);
     refs.todoList.innerHTML = '';
     refs.todoList.insertAdjacentHTML('beforeend', markUpItems.join(''))
 };
 
-startRenderToDo(todos)
+startRenderToDo()
 
 function deleteToDo(id) {
+    todos = todos.filter((todo) => todo.id !== Number(id))
     console.log("delete");
 };
 
 function toggleToDoCheck(id) {
+    todos = todos.map((todo) =>  todo.id === Number(id) ? { ...todo, checked: !todo.checked } : todo)
     console.log('toggle');
 }
 
@@ -45,9 +46,12 @@ function onToDoElement(e) {
                 deleteToDo(id);
                 break;
             case 'INPUT':
-            case 'LABLE':
+            case 'LABEL':
+            case 'LI':
+            case 'SPAN':
                 toggleToDoCheck(id);
                 break;
         }
+        startRenderToDo()
     }
 }
