@@ -7,9 +7,33 @@
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
-    <button type="button" data-start>Start</button>
-    <button type="button" data-stop>Stop</button>
+    <div class="container">
+
+      <div class="row">
+        <div class="col">
+          <h1>Todo List</h1>
+          <form>
+            <div class="form-group">
+              <label class="form-label">
+                <span>Add new todo</span>
+                <input type="texr" name="text" class="form-control" placeholder="Enter your task" />
+              </label>
+            </div>
     
-    <script src="js/01-color-switcher.js"></script>
+            <button type="submit" class="btn btn-primary">+ Add todo</button>
+            <button type="button" class="btn btn-success">Print</button>
+          </form>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col">
+          <ul class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+    
+    <div id="made-in-ny"></div>
+    <script src="js/index.js"></script>
   </body>
 </html>
