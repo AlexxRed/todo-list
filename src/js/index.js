@@ -26,13 +26,13 @@ function startRenderToDo() {
 startRenderToDo()
 
 function deleteToDo(id) {
-    todos = todos.filter((todo) => todo.id !== id)
-    console.log("delete");
+    todos = todos.filter((todo) => todo.id !== id);
+    // console.log("delete");
 };
 
 function toggleToDoCheck(id) {
-    todos = todos.map((todo) =>  todo.id === id ? { ...todo, checked: !todo.checked } : todo)
-    console.log('toggle');
+    todos = todos.map((todo) => todo.id === id ? { ...todo, checked: !todo.checked } : todo);
+    // console.log('toggle');
 }
 
 function onToDoElement(e) {
@@ -53,8 +53,8 @@ function onToDoElement(e) {
                 toggleToDoCheck(id);
                 break;
         }
-        startRenderToDo()
-    }
+        startRenderToDo();
+    };
 }
 
 function onPrint() {
