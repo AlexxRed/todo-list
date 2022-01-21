@@ -162,6 +162,7 @@ function onSubmit(e) {
     todos.push(newToDo);
     refs.form.reset()
     startRenderToDo()
+    toastr.info(`Your task "${value}" created`)
     
 }
 
