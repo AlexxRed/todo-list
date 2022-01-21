@@ -75,7 +75,7 @@ function saveToDoList() {
 
 function loadToDoList() {
     try {
-        console.log('try');
+        // console.log('try');
         todos = JSON.parse(localStorage.getItem('todos')) || []
     } catch (e) {
         toastr.error('Data not loaded')
@@ -109,7 +109,7 @@ function deleteToDo(id) {
     const modalText = document.querySelector('#text')
     const cancelDelete = document.querySelector('.btn-cancel');
     const approveDelete = document.querySelector('.btn-delete');
-    
+
     modalText.textContent = currentWarninigName
     cancelDelete.addEventListener('click', onCancelDeleteToDo);
     approveDelete.addEventListener('click', onApproveDeleteToDo)
