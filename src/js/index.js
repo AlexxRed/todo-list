@@ -1,4 +1,4 @@
-
+// ================== make imports ==================
 import { v4 as uuidv4 } from 'uuid';
 import { getRefs } from './getRefs';
 import { itemTemplate } from './todoTamplate';
@@ -40,12 +40,14 @@ const refs = getRefs();
 let currentId; 
 let currentToDoName;
 
+
 let todos = [
     { id: '1', label: 'template text', checked: true },
     { id: '2', label: 'template text', checked: false },
     { id: '3', label: 'template text', checked: false },
     { id: '4', label: 'template text', checked: false },
 ];
+
 
 function onCancelDeleteToDo() {
     deleteModal.close()
@@ -71,12 +73,10 @@ function saveToDoList() {
 
 function loadToDoList() {
     try {
-        todos =JSON.parse(localStorage.getItem('todos')) 
-    }
-    catch {
-        todos = [
-    { id: '1', label: 'change your task', checked: true },
-];
+        console.log('try');
+        todos = JSON.parse(localStorage.getItem('todos')) || []
+    } catch (e) {
+        return []
     }
 }
 
