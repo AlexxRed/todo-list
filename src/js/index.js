@@ -1,3 +1,4 @@
+
 import { v4 as uuidv4 } from 'uuid';
 import { getRefs } from './getRefs';
 import { itemTemplate } from './todoTamplate';
@@ -90,17 +91,21 @@ function startRenderToDo() {
 };
 
 
-
 function deleteToDo(id) {
+    let currentWarninigName;
+    todos.map((todo) => {
+        if (todo.id === id) {
+            currentWarninigName = todo.label
+        }
+    })
+    toastr.error(`Do You want delete ${currentWarninigName}?`)
+
     deleteModal.show()
     currentId = id
-
     const cancelDelete = document.querySelector('.btn-cancel');
     const approveDelete = document.querySelector('.btn-delete');
     cancelDelete.addEventListener('click', onCancelDeleteToDo);
     approveDelete.addEventListener('click', onApproveDeleteToDo)
-
-    // console.log("delete");
 };
 
 function toggleToDoCheck(id) {
