@@ -9,10 +9,16 @@ import 'toastr/build/toastr.min.css';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
 
+
+const refs = getRefs();
+let currentId; 
+let currentToDoName;
+let currentWarninigName;
+
 const deleteModal = basicLightbox.create(`
 <div class="delete-modal">
 	<h1>Do you really want to delete this task?</h1>
-	<p id="text">lorem ipsum</p>
+	<p id="text">item</p>
   <button class="btn btn-cancel">Cancel</button>
   <button class="btn btn-delete">Delete</button>
 </div>
@@ -36,16 +42,12 @@ toastr.options = {
   "hideMethod": "fadeOut"
 }
 
-const refs = getRefs();
-let currentId; 
-let currentToDoName;
-
 
 let todos = [
-    { id: '1', label: 'template text', checked: true },
-    { id: '2', label: 'template text', checked: false },
-    { id: '3', label: 'template text', checked: false },
-    { id: '4', label: 'template text', checked: false },
+    // { id: '1', label: 'template text', checked: true },
+    // { id: '2', label: 'template text', checked: false },
+    // { id: '3', label: 'template text', checked: false },
+    // { id: '4', label: 'template text', checked: false },
 ];
 
 
@@ -76,7 +78,8 @@ function loadToDoList() {
         console.log('try');
         todos = JSON.parse(localStorage.getItem('todos')) || []
     } catch (e) {
-        return []
+        toastr.error('Data not loaded')
+        return todos = [{ id: '1', label: 'template text', checked: true },]
     }
 }
 
@@ -92,7 +95,7 @@ function startRenderToDo() {
 
 
 function deleteToDo(id) {
-    let currentWarninigName;
+    
     todos.map((todo) => {
         if (todo.id === id) {
             currentWarninigName = todo.label
@@ -102,8 +105,12 @@ function deleteToDo(id) {
 
     deleteModal.show()
     currentId = id
+    
+    const modalText = document.querySelector('#text')
     const cancelDelete = document.querySelector('.btn-cancel');
     const approveDelete = document.querySelector('.btn-delete');
+    
+    modalText.textContent = currentWarninigName
     cancelDelete.addEventListener('click', onCancelDeleteToDo);
     approveDelete.addEventListener('click', onApproveDeleteToDo)
 };
