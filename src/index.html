@@ -7,16 +7,13 @@
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
-    
+    <div class="header-style"></div>
     <div class="container">
-      <div class="header-style">
-        <div class="row">
-          <div class="col">
-            <h1>Todo List</h1>
+            <h1 class="main-title">Todo List</h1>
             <form>
               <div class="form-group">
                 <label class="form-label">
-                  <span>Add new todo</span>
+                  <span class="pretext">Add new todo</span>
                   <input type="text" name="text" class="form-control" placeholder="Enter your task" />
                 </label>
               </div>
@@ -24,21 +21,22 @@
                 <button type="submit" class="btn btn-primary button-29">+ Add todo</button>
                 <button type="button" class="btn btn-success button-29">Print</button>
               </div>
-        
             </form>
-          </div>
-        </div>
-      </div>
+          
+        
+      
+        <div class="list-wrapper">
+          <ul class="list-group">
 
-      <div class="row">
-        <div class="col">
-          <ul class="list-group"></ul>
+          </ul>
         </div>
-      </div>
+          
+        
+      <footer class="footer-style"></footer>
     </div>
     
-    <div id="made-in-ny"></div>
-    <div class="footer-style"></div>
+    
+    
     <script src="js/index.js"></script>
   </body>
 </html>
