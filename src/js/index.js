@@ -19,8 +19,8 @@ const deleteModal = basicLightbox.create(`
 <div class="delete-modal">
 	<h1>Do you really want to delete this task?</h1>
 	<p id="text">item</p>
-  <button class="btn btn-cancel">Cancel</button>
-  <button class="btn btn-delete">Delete</button>
+  <button class="btn btn-cancel btn-success">Cancel</button>
+  <button class="btn btn-delete btn-danger">Delete</button>
 </div>
 `);
 
@@ -30,7 +30,7 @@ toastr.options = {
   "newestOnTop": false,
   "progressBar": true,
   "positionClass": "toast-top-right",
-  "preventDuplicates": false,
+  "preventDuplicates": true,
   "onclick": null,
   "showDuration": "300",
   "hideDuration": "1000",
@@ -44,10 +44,8 @@ toastr.options = {
 
 
 let todos = [
-    // { id: '1', label: 'template text', checked: true },
-    // { id: '2', label: 'template text', checked: false },
-    // { id: '3', label: 'template text', checked: false },
-    // { id: '4', label: 'template text', checked: false },
+    { id: '1', label: 'delete this task and create your own', checked: true },
+    { id: '2', label: 'delete this task and create your own', checked: false },
 ];
 
 
@@ -122,6 +120,7 @@ function toggleToDoCheck(id) {
 }
 
 function onToDoElement(e) {
+    console.log(e.target.nodeName);
     if (e.target.nodeName === 'UL') {
         console.log('ne tuda tuknul');
         return
@@ -130,6 +129,7 @@ function onToDoElement(e) {
         const { id } = e.target.closest('li').dataset
         switch (e.target.nodeName) {
             case 'BUTTON':
+            case 'B':
                 deleteToDo(id);
                 break;
             case 'INPUT':
@@ -150,7 +150,11 @@ function onPrint() {
 function onSubmit(e) {
     e.preventDefault();
     const { value } = e.target.elements.text;
-    if (!value) return;
+
+    if (!value) {
+        toastr.info('Write the task you plan to do and then click - Add todo')
+        return;
+    } 
     // console.log(e.target.elements.text.value);
 
     const newToDo = {
@@ -177,6 +181,10 @@ function startRenderToDoList() {
 
     startRenderToDo()
 }
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+};
 
 startRenderToDoList()
 toastr.info('Create your Task')

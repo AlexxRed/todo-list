@@ -4,6 +4,6 @@ export function itemTemplate ({ id, label, checked }) {
     <input class="todo-check" type="checkbox" ${checked ? 'checked' : ''} />
     <span class="todo-text">${label}</span>
     </label>
-    <button type="button" class="btn btn-danger">x</button>
+    <button type="button" class="btn btn-danger"><b>X</b></button>
 </li>`;
 }
